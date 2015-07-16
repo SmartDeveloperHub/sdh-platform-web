@@ -1,0 +1,22 @@
+mysql:
+  hostname: mysql
+  domainname: localdomain
+  build: mysql
+  command: /sbin/my_init
+  environment:
+    - MYSQL_PASS=secret
+
+phpmyadmin:
+  hostname: phpmyadmin
+  domainname: localdomain
+  build: phpmyadmin
+  command: /sbin/my_init
+  environment:
+    - MYSQL_USER=root
+    - MYSQL_PASS=secret
+    - MYSQL_ADDR=mysql
+    - MYSQL_PORT=3306
+  links:
+    - mysql:mysql
+  ports:
+    - "8080:80"
