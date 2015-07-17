@@ -18,5 +18,21 @@ phpmyadmin:
     - MYSQL_PORT=3306
   links:
     - mysql:mysql
+
+laravel:
+  hostname: laravel
+  domainname: localdomain
+  build: laravel
+  command: /sbin/my_init
+  environment:
+    - MYSQL_USER=root
+    - MYSQL_PASS=secret
+    - MYSQL_ADDR=mysql
+    - MYSQL_PORT=3306
+    - SDH_API=127.0.0.1:8000
+    - LARAVEL_DB=homestead
+  links:
+    - mysql:mysql
   ports:
-    - "8080:80"
+    - "9100:80"
+    - "9200:443"
