@@ -34,5 +34,4 @@ laravel:
   links:
     - mysql:mysql
   ports:
-    - "9100:80"
-    - "9200:443"
+    - "9003:80"
