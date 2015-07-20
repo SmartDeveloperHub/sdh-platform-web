@@ -29,7 +29,7 @@ laravel:
     - MYSQL_PASS=secret
     - MYSQL_ADDR=mysql
     - MYSQL_PORT=3306
-    - SDH_API=127.0.0.1:8000
+    - SDH_API_HOST=http://sdhapi:8080
     - LARAVEL_DB=homestead
   links:
     - mysql:mysql

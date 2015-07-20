@@ -9,7 +9,7 @@ Move_Laravel() {
         -e "s|\DB_DATABASE=.*|DB_DATABASE=$LARAVEL_DB|g" \
         -e "s|\DB_USERNAME=.*|DB_USERNAME=$MYSQL_USER|g" \
         -e "s|\DB_PASSWORD=.*|DB_PASSWORD=$MYSQL_PASS|g" \
-        -e "s|\SDH_API=.*|SDH_API=$SDH_API|g" \
+        -e "s|\SDH_API=.*|SDH_API=$SDH_API_HOST|g" \
     /var/www/html/.env
     cd $COMPOSER_HOME
     composer install -n
