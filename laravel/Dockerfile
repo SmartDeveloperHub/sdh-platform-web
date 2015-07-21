@@ -25,7 +25,7 @@ RUN php5enmod json
 RUN /usr/sbin/a2enmod rewrite
 RUN /usr/sbin/a2enmod ssl
 RUN /usr/sbin/a2ensite default-ssl
-RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-available/*.conf
+ADD ./files/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
 #Install composer
 RUN /usr/bin/curl -sS https://getcomposer.org/installer |/usr/bin/php
