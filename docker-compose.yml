@@ -1,16 +1,14 @@
 mysql:
   hostname: mysql
   domainname: localdomain
-  build: mysql
-  command: /sbin/my_init
+  image: smartdeveloperhub/mysql  
   environment:
     - MYSQL_PASS=secret
 
 phpmyadmin:
   hostname: phpmyadmin
   domainname: localdomain
-  build: phpmyadmin
-  command: /sbin/my_init
+  image: smartdeveloperhub/phpmyadmin
   environment:
     - MYSQL_USER=root
     - MYSQL_PASS=secret
@@ -22,14 +20,13 @@ phpmyadmin:
 laravel:
   hostname: laravel
   domainname: localdomain
-  build: laravel
-  command: /sbin/my_init
+  image: smartdeveloperhub/laravel
   environment:
     - MYSQL_USER=root
     - MYSQL_PASS=secret
     - MYSQL_ADDR=mysql
     - MYSQL_PORT=3306
-    - SDH_API_HOST=http://138.4.249.224:9002
+    - SDH_API_HOST=http://localhost:9002
     - LARAVEL_DB=homestead
   links:
     - mysql:mysql
