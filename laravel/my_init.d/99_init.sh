@@ -22,6 +22,9 @@ Update() {
     then
         echo "Repository is not present, need to clone."
         git clone $2 $1
+        cd $1
+        git checkout $3
+        cd ..
         rm -rf /var/www/html
         cp -R $1 /var/www/html
         mv /var/www/html/.env.example /var/www/html/.env
@@ -33,9 +36,6 @@ Update() {
 
     else
         echo "Pulling..."
-        cd $1
-        git pull $2
-        cd ..
         cp -R $1 /var/www/html
         mv /var/www/html/.env.example /var/www/html/.env
         Move_Laravel $1
@@ -49,7 +49,7 @@ Update() {
 sleep 25
 
 echo "> SDH Web"
-Update $SDHNAME https://github.com/smartdeveloperhub/$SDHNAME.git
+Update $SDHNAME https://github.com/smartdeveloperhub/$SDHNAME.git master
 
 service apache2 stop
 echo "Starting apache"
