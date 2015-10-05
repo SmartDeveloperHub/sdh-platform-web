@@ -1,4 +1,8 @@
 #!/bin/sh
+
+if [ -z "$LARAVEL_VERSION" ]; then
+    export LARAVEL_VERSION=master
+fi
  
 ROOT=$(pwd)
 SDHNAME="sdh-web"
@@ -23,7 +27,7 @@ Update() {
         echo "Repository is not present, need to clone."
         git clone $2 $1
         cd $1
-        git checkout $3
+        git checkout $LARAVEL_VERSION
         cd ..
         rm -rf /var/www/html
         cp -R $1 /var/www/html
@@ -49,7 +53,7 @@ Update() {
 sleep 25
 
 echo "> SDH Web"
-Update $SDHNAME https://github.com/smartdeveloperhub/$SDHNAME.git master
+Update $SDHNAME https://github.com/smartdeveloperhub/$SDHNAME.git
 
 service apache2 stop
 echo "Starting apache"
