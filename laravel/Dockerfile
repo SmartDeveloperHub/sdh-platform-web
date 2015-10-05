@@ -36,6 +36,8 @@ RUN chmod +x /usr/local/bin/composer
 ADD ./my_init.d/ /etc/my_init.d/
 ONBUILD ./my_init.d/ /etc/my_init.d/
 
+ENV LARAVEL_VERSION=tags/v0.2
+
 CMD ["/sbin/my_init"]
 
 # Ports
