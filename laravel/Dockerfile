@@ -15,7 +15,11 @@ RUN apt-get -qq update && \
 		apache2 php5 curl git \
 		pwgen php5-mcrypt \
 		php5-json php5-mysqlnd \
-		mysql-client-5.6
+		mysql-client-5.6 \
+		npm
+
+#Create a symlink for node
+RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 
 #Configure PHP
 RUN php5enmod mcrypt
@@ -31,6 +35,9 @@ ADD ./files/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 RUN /usr/bin/curl -sS https://getcomposer.org/installer |/usr/bin/php
 RUN /bin/mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
+
+#Install bower
+RUN npm install -g bower
 
 # Configure runit
 ADD ./my_init.d/ /etc/my_init.d/
